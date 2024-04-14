@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Box, Heading, Text, VStack, Input, Button, HStack } from "@chakra-ui/react";
+import { Box, Heading, Text, VStack, Input, Button, HStack, OrderedList, ListItem } from "@chakra-ui/react";
 
 const Index = () => {
   const [newTodo, setNewTodo] = useState("");
+  const [todos, setTodos] = useState([]);
 
   const handleAddTodo = () => {
-    console.log("New todo:", newTodo);
+    setTodos([...todos, newTodo]);
     setNewTodo("");
   };
 
@@ -26,6 +27,14 @@ const Index = () => {
             Add
           </Button>
         </HStack>
+
+        <Box>
+          <OrderedList>
+            {todos.map((todo, index) => (
+              <ListItem key={index}>{todo}</ListItem>
+            ))}
+          </OrderedList>
+        </Box>
       </VStack>
 
       {/* Footer */}
