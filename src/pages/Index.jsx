@@ -1,15 +1,27 @@
-// Complete the Index page component here
-// Use chakra-ui
-import { Button } from "@chakra-ui/react"; // example
-import { FaPlus } from "react-icons/fa"; // example - use react-icons/fa for icons
+import React from "react";
+import { Box, Heading, Text, VStack } from "@chakra-ui/react";
 
 const Index = () => {
-  // TODO: Create the website here!
   return (
-    <Button>
-      Hello world! <FaPlus />
-    </Button>
-  ); // example
+    <Box bg="white" minH="100vh">
+      {/* Header */}
+      <Box as="header" bg="blue.500" py={4} color="white">
+        <Heading as="h1" size="xl" textAlign="center">
+          My Todo App
+        </Heading>
+      </Box>
+
+      {/* Main Content */}
+      <VStack as="main" spacing={8} p={8}>
+        {/* TODO: Add todo functionality */}
+      </VStack>
+
+      {/* Footer */}
+      <Box as="footer" bg="gray.100" py={4} textAlign="center">
+        <Text color="gray.500">Created by GPT Assistant</Text>
+      </Box>
+    </Box>
+  );
 };
 
 export default Index;
