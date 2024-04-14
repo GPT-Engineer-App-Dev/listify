@@ -1,7 +1,14 @@
-import React from "react";
-import { Box, Heading, Text, VStack } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Box, Heading, Text, VStack, Input, Button, HStack } from "@chakra-ui/react";
 
 const Index = () => {
+  const [newTodo, setNewTodo] = useState("");
+
+  const handleAddTodo = () => {
+    console.log("New todo:", newTodo);
+    setNewTodo("");
+  };
+
   return (
     <Box bg="white" minH="100vh">
       {/* Header */}
@@ -11,9 +18,14 @@ const Index = () => {
         </Heading>
       </Box>
 
-      {/* Main Content */}
+      {}
       <VStack as="main" spacing={8} p={8}>
-        {/* TODO: Add todo functionality */}
+        <HStack>
+          <Input value={newTodo} onChange={(e) => setNewTodo(e.target.value)} placeholder="Enter a new todo" />
+          <Button onClick={handleAddTodo} colorScheme="blue">
+            Add
+          </Button>
+        </HStack>
       </VStack>
 
       {/* Footer */}
