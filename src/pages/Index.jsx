@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-import { Box, Heading, Text, VStack, Input, Button, HStack, OrderedList, ListItem } from "@chakra-ui/react";
+import { Box, Heading, Text, VStack, Input, Button, HStack, OrderedList, ListItem, Checkbox } from "@chakra-ui/react";
 
 const Index = () => {
   const [newTodo, setNewTodo] = useState("");
   const [todos, setTodos] = useState([]);
 
+  const handleToggleTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].completed = !newTodos[index].completed;
+    setTodos(newTodos);
+  };
+
   const handleAddTodo = () => {
-    setTodos([...todos, newTodo]);
+    setTodos([...todos, { text: newTodo, completed: false }]);
     setNewTodo("");
   };
 
@@ -31,7 +37,12 @@ const Index = () => {
         <Box>
           <OrderedList>
             {todos.map((todo, index) => (
-              <ListItem key={index}>{todo}</ListItem>
+              <ListItem key={index}>
+                <Checkbox isChecked={todo.completed} onChange={() => handleToggleTodo(index)} mr={2} />
+                <Text textDecoration={todo.completed ? "line-through" : "none"} color={todo.completed ? "gray.500" : "inherit"}>
+                  {todo.text}
+                </Text>
+              </ListItem>
             ))}
           </OrderedList>
         </Box>
